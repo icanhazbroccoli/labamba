@@ -1,0 +1,5 @@
+<h2>Edit Band</h2>
+
+<%= render "form.html", Map.put(assigns, :action, band_path(@conn, :update, @band)) %>
+
+<span><%= link "Back", to: band_path(@conn, :index) %></span>

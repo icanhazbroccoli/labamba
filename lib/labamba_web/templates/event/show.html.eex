@@ -1,0 +1,43 @@
+<h2>Show Event</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @event.description %>
+  </li>
+
+  <li>
+    <strong>Date start:</strong>
+    <%= @event.date_start %>
+  </li>
+
+  <li>
+    <strong>Date end:</strong>
+    <%= @event.date_end %>
+  </li>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </li>
+
+  <li>
+    <strong>Location lat:</strong>
+    <%= @event.location_lat %>
+  </li>
+
+  <li>
+    <strong>Location lon:</strong>
+    <%= @event.location_lon %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: event_path(@conn, :edit, @event) %></span>
+<span><%= link "Back", to: event_path(@conn, :index) %></span>

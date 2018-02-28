@@ -1,0 +1,23 @@
+<h2>Show Band</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @band.name %>
+  </li>
+
+  <li>
+    <strong>Indexed name:</strong>
+    <%= @band.indexed_name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @band.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: band_path(@conn, :edit, @band) %></span>
+<span><%= link "Back", to: band_path(@conn, :index) %></span>
