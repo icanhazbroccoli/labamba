@@ -9,6 +9,8 @@ defmodule Labamba.Editor.Band do
     field :indexed_name, :string
     field :name, :string
 
+    many_to_many :events, Labamba.Editor.Event, join_through: "events_bands"
+
     timestamps()
   end
 
