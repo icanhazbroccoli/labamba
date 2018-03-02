@@ -20,6 +20,8 @@ defmodule LabambaWeb.Router do
   end
 
   scope "/editor", LabambaWeb do
+    pipe_through :browser
+
     resources "/bands", BandController
     resources "/events", EventController
   end

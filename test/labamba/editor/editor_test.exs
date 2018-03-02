@@ -85,12 +85,12 @@ defmodule Labamba.EditorTest do
 
     test "list_events/0 returns all events" do
       event = event_fixture()
-      assert Editor.list_events() == [event]
+      assert Editor.list_events() |> Repo.preload(:bands) == [event]
     end
 
     test "get_event!/1 returns the event with given id" do
       event = event_fixture()
-      assert Editor.get_event!(event.id) == event
+      assert Editor.get_event!(event.id) |> Repo.preload(:bands) == event
     end
 
     test "create_event/1 with valid data creates a event" do
@@ -124,7 +124,7 @@ defmodule Labamba.EditorTest do
     test "update_event/2 with invalid data returns error changeset" do
       event = event_fixture()
       assert {:error, %Ecto.Changeset{}} = Editor.update_event(event, @invalid_attrs)
-      assert event == Editor.get_event!(event.id)
+      assert event == Editor.get_event!(event.id) |> Repo.preload(:bands)
     end
 
     test "delete_event/1 deletes the event" do

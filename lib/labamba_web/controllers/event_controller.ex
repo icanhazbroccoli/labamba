@@ -3,6 +3,7 @@ defmodule LabambaWeb.EventController do
 
   alias Labamba.Editor
   alias Labamba.Editor.Event
+  alias Labamba.Repo
 
   def index(conn, _params) do
     events = Editor.list_events()
@@ -31,13 +32,13 @@ defmodule LabambaWeb.EventController do
   end
 
   def edit(conn, %{"id" => id}) do
-    event = Editor.get_event!(id)
+    event = Editor.get_event!(id) |> Repo.preload(:bands)
     changeset = Editor.change_event(event)
     render(conn, "edit.html", event: event, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "event" => event_params}) do
-    event = Editor.get_event!(id)
+    event = Editor.get_event!(id) |> Repo.preload(:bands)
 
     case Editor.update_event(event, event_params) do
       {:ok, event} ->
