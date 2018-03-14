@@ -12,12 +12,6 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :indexed_name, class: "control-label" %>
-    <%= text_input f, :indexed_name, class: "form-control" %>
-    <%= error_tag f, :indexed_name %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :description, class: "control-label" %>
     <%= textarea f, :description, class: "form-control" %>
     <%= error_tag f, :description %>

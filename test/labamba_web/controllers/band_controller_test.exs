@@ -3,9 +3,9 @@ defmodule LabambaWeb.BandControllerTest do
 
   alias Labamba.Editor
 
-  @create_attrs %{description: "some description", indexed_name: "some indexed_name", name: "some name"}
-  @update_attrs %{description: "some updated description", indexed_name: "some updated indexed_name", name: "some updated name"}
-  @invalid_attrs %{description: nil, indexed_name: nil, name: nil}
+  @create_attrs %{description: "some description", name: "some name"}
+  @update_attrs %{description: "some updated description", name: "some updated name"}
+  @invalid_attrs %{description: nil, name: nil}
 
   def fixture(:band) do
     {:ok, band} = Editor.create_band(@create_attrs)

@@ -1,14 +1,15 @@
 defmodule Labamba.EditorTest do
   use Labamba.DataCase
+  import Ecto.Query
 
   alias Labamba.Editor
 
   describe "bands" do
     alias Labamba.Editor.Band
 
-    @valid_attrs %{description: "some description", indexed_name: "some indexed_name", name: "some name"}
-    @update_attrs %{description: "some updated description", indexed_name: "some updated indexed_name", name: "some updated name"}
-    @invalid_attrs %{description: nil, indexed_name: nil, name: nil}
+    @valid_attrs %{description: "some description", name: "some name"}
+    @update_attrs %{description: "some updated description", name: "some updated name"}
+    @invalid_attrs %{description: nil, name: nil}
 
     def band_fixture(attrs \\ %{}) do
       {:ok, band} =
@@ -32,7 +33,6 @@ defmodule Labamba.EditorTest do
     test "create_band/1 with valid data creates a band" do
       assert {:ok, %Band{} = band} = Editor.create_band(@valid_attrs)
       assert band.description == "some description"
-      assert band.indexed_name == "some indexed_name"
       assert band.name == "some name"
     end
 
@@ -45,7 +45,6 @@ defmodule Labamba.EditorTest do
       assert {:ok, band} = Editor.update_band(band, @update_attrs)
       assert %Band{} = band
       assert band.description == "some updated description"
-      assert band.indexed_name == "some updated indexed_name"
       assert band.name == "some updated name"
     end
 
@@ -64,6 +63,16 @@ defmodule Labamba.EditorTest do
     test "change_band/1 returns a band changeset" do
       band = band_fixture()
       assert %Ecto.Changeset{} = Editor.change_band(band)
+    end
+
+    test "where_band_like/2 returns a relevant band" do
+      _band = band_fixture(%{ name: "labamba event" })
+      query = from b in Band
+      query
+      |> Editor.where_band_like("labamba")
+      |> Repo.all
+      # Ecto.Adapters.SQL.to_sql(:all, Repo, query |> Editor.where_band_like("labamba"))
+      # |> IO.inspect
     end
   end
 

@@ -8,6 +8,12 @@ defmodule Labamba.Editor do
 
   alias Labamba.Editor.Band
 
+  defmacro _where_band_like_stmt(search_string) do
+    quote do
+      fragment("b0.name @@ plainto_tsquery(unaccent(?))", ^unquote(search_string))
+    end
+  end
+
   @doc """
   Returns the list of bands.
 
@@ -100,6 +106,11 @@ defmodule Labamba.Editor do
   """
   def change_band(%Band{} = band) do
     Band.changeset(band, %{})
+  end
+
+  def where_band_like(query, search_string) do
+    from q in query,
+    where: _where_band_like_stmt(normalize(search_string))
   end
 
   alias Labamba.Editor.Event
@@ -196,5 +207,14 @@ defmodule Labamba.Editor do
   """
   def change_event(%Event{} = event) do
     Event.changeset(event, %{})
+  end
+
+  defp normalize(search_string) do
+    search_string
+    |> String.downcase
+    |> String.replace(~r/\n/, " ")
+    |> String.replace(~r/\t/, " ")
+    |> String.replace(~r/\s{2,}/, " ")
+    |> String.trim
   end
 end

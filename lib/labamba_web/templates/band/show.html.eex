@@ -8,11 +8,6 @@
   </li>
 
   <li>
-    <strong>Indexed name:</strong>
-    <%= @band.indexed_name %>
-  </li>
-
-  <li>
     <strong>Description:</strong>
     <%= @band.description %>
   </li>

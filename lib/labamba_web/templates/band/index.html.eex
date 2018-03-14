@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Indexed name</th>
       <th>Description</th>
 
       <th></th>
@@ -14,7 +13,6 @@
 <%= for band <- @bands do %>
     <tr>
       <td><%= band.name %></td>
-      <td><%= band.indexed_name %></td>
       <td><%= band.description %></td>
 
       <td class="text-right">

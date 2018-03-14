@@ -4,7 +4,6 @@ defmodule Labamba.Repo.Migrations.CreateBands do
   def change do
     create table(:bands) do
       add :name, :string
-      add :indexed_name, :string
       add :description, :text
 
       timestamps()
