@@ -9,6 +9,6 @@ defmodule Labamba.Repo.Migrations.CreateTriggerEventsNameTsvUnaccentTrigger do
   end
 
   def down do
-    execute "DROP TRIGGER T_bands_name_tsv_unaccent_trigger on events"
+    execute "DROP TRIGGER T_events_name_tsv_unaccent_trigger on events"
   end
 end

@@ -9,5 +9,6 @@ defmodule Labamba.Repo.Migrations.CreateBands do
       timestamps()
     end
 
+    create index(:bands, [:name])
   end
 end

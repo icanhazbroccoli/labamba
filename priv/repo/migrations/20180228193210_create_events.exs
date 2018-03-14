@@ -14,5 +14,6 @@ defmodule Labamba.Repo.Migrations.CreateEvents do
       timestamps()
     end
 
+    create index(:events, [:name])
   end
 end
