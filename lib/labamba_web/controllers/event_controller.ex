@@ -1,22 +1,22 @@
 defmodule LabambaWeb.EventController do
   use LabambaWeb, :controller
 
-  alias Labamba.Editor
-  alias Labamba.Editor.Event
+  alias Labamba.Model
+  alias Labamba.Model.Event
   alias Labamba.Repo
 
   def index(conn, _params) do
-    events = Editor.list_events()
+    events = Model.list_events()
     render(conn, "index.html", events: events)
   end
 
   def new(conn, _params) do
-    changeset = Editor.change_event(%Event{})
+    changeset = Model.change_event(%Event{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"event" => event_params}) do
-    case Editor.create_event(event_params) do
+    case Model.create_event(event_params) do
       {:ok, event} ->
         conn
         |> put_flash(:info, "Event created successfully.")
@@ -27,20 +27,20 @@ defmodule LabambaWeb.EventController do
   end
 
   def show(conn, %{"id" => id}) do
-    event = Editor.get_event!(id)
+    event = Model.get_event!(id)
     render(conn, "show.html", event: event)
   end
 
   def edit(conn, %{"id" => id}) do
-    event = Editor.get_event!(id) |> Repo.preload(:bands)
-    changeset = Editor.change_event(event)
+    event = Model.get_event!(id) |> Repo.preload(:bands)
+    changeset = Model.change_event(event)
     render(conn, "edit.html", event: event, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "event" => event_params}) do
-    event = Editor.get_event!(id) |> Repo.preload(:bands)
+    event = Model.get_event!(id) |> Repo.preload(:bands)
 
-    case Editor.update_event(event, event_params) do
+    case Model.update_event(event, event_params) do
       {:ok, event} ->
         conn
         |> put_flash(:info, "Event updated successfully.")
@@ -51,8 +51,8 @@ defmodule LabambaWeb.EventController do
   end
 
   def delete(conn, %{"id" => id}) do
-    event = Editor.get_event!(id)
-    {:ok, _event} = Editor.delete_event(event)
+    event = Model.get_event!(id)
+    {:ok, _event} = Model.delete_event(event)
 
     conn
     |> put_flash(:info, "Event deleted successfully.")

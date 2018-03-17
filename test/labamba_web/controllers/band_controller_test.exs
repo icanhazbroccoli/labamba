@@ -1,14 +1,14 @@
 defmodule LabambaWeb.BandControllerTest do
   use LabambaWeb.ConnCase
 
-  alias Labamba.Editor
+  alias Labamba.Model
 
   @create_attrs %{description: "some description", name: "some name"}
   @update_attrs %{description: "some updated description", name: "some updated name"}
   @invalid_attrs %{description: nil, name: nil}
 
   def fixture(:band) do
-    {:ok, band} = Editor.create_band(@create_attrs)
+    {:ok, band} = Model.create_band(@create_attrs)
     band
   end
 

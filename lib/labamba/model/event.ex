@@ -1,19 +1,19 @@
-defmodule Labamba.Editor.Event do
+defmodule Labamba.Model.Event do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Labamba.Editor.Event
+  alias Labamba.Model.Event
 
 
   schema "events" do
+    field :name, :string
     field :date_end, :date
     field :date_start, :date
     field :description, :string
     field :location, :string
     field :location_lat, :float
     field :location_lon, :float
-    field :name, :string
 
-    many_to_many :bands, Labamba.Editor.Band, join_through: "events_bands"
+    many_to_many :bands, Labamba.Model.Band, join_through: "events_bands"
 
     timestamps()
   end
@@ -35,7 +35,7 @@ defmodule Labamba.Editor.Event do
   end
 
   defp get_or_insert_band(name) do
-    Labamba.Repo.get_by(Labamba.Editor.Band, name: name) ||
-      Labamba.Repo.insert!(Labamba.Editor.Band, %Labamba.Editor.Band{name: name})
+    Labamba.Repo.get_by(Labamba.Model.Band, name: name) ||
+      Labamba.Repo.insert!(Labamba.Model.Band, %Labamba.Model.Band{name: name})
   end
 end

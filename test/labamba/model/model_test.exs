@@ -1,11 +1,11 @@
-defmodule Labamba.EditorTest do
+defmodule Labamba.ModelTest do
   use Labamba.DataCase
   import Ecto.Query
 
-  alias Labamba.Editor
+  alias Labamba.Model
 
   describe "bands" do
-    alias Labamba.Editor.Band
+    alias Labamba.Model.Band
 
     @valid_attrs %{description: "some description", name: "some name"}
     @update_attrs %{description: "some updated description", name: "some updated name"}
@@ -15,34 +15,34 @@ defmodule Labamba.EditorTest do
       {:ok, band} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Editor.create_band()
+        |> Model.create_band()
 
       band
     end
 
     test "list_bands/0 returns all bands" do
       band = band_fixture()
-      assert Editor.list_bands() == [band]
+      assert Model.list_bands() == [band]
     end
 
     test "get_band!/1 returns the band with given id" do
       band = band_fixture()
-      assert Editor.get_band!(band.id) == band
+      assert Model.get_band!(band.id) == band
     end
 
     test "create_band/1 with valid data creates a band" do
-      assert {:ok, %Band{} = band} = Editor.create_band(@valid_attrs)
+      assert {:ok, %Band{} = band} = Model.create_band(@valid_attrs)
       assert band.description == "some description"
       assert band.name == "some name"
     end
 
     test "create_band/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Editor.create_band(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Model.create_band(@invalid_attrs)
     end
 
     test "update_band/2 with valid data updates the band" do
       band = band_fixture()
-      assert {:ok, band} = Editor.update_band(band, @update_attrs)
+      assert {:ok, band} = Model.update_band(band, @update_attrs)
       assert %Band{} = band
       assert band.description == "some updated description"
       assert band.name == "some updated name"
@@ -50,34 +50,34 @@ defmodule Labamba.EditorTest do
 
     test "update_band/2 with invalid data returns error changeset" do
       band = band_fixture()
-      assert {:error, %Ecto.Changeset{}} = Editor.update_band(band, @invalid_attrs)
-      assert band == Editor.get_band!(band.id)
+      assert {:error, %Ecto.Changeset{}} = Model.update_band(band, @invalid_attrs)
+      assert band == Model.get_band!(band.id)
     end
 
     test "delete_band/1 deletes the band" do
       band = band_fixture()
-      assert {:ok, %Band{}} = Editor.delete_band(band)
-      assert_raise Ecto.NoResultsError, fn -> Editor.get_band!(band.id) end
+      assert {:ok, %Band{}} = Model.delete_band(band)
+      assert_raise Ecto.NoResultsError, fn -> Model.get_band!(band.id) end
     end
 
     test "change_band/1 returns a band changeset" do
       band = band_fixture()
-      assert %Ecto.Changeset{} = Editor.change_band(band)
+      assert %Ecto.Changeset{} = Model.change_band(band)
     end
 
     test "where_band_like/2 returns a relevant band" do
       _band = band_fixture(%{ name: "labamba event" })
       query = from b in Band
       query
-      |> Editor.where_band_like("labamba")
+      |> Model.where_band_like("labamba")
       |> Repo.all
-      # Ecto.Adapters.SQL.to_sql(:all, Repo, query |> Editor.where_band_like("labamba"))
+      # Ecto.Adapters.SQL.to_sql(:all, Repo, query |> Model.where_band_like("labamba"))
       # |> IO.inspect
     end
   end
 
   describe "events" do
-    alias Labamba.Editor.Event
+    alias Labamba.Model.Event
 
     @valid_attrs %{date_end: ~D[2010-04-17], date_start: ~D[2010-04-17], description: "some description", location: "some location", location_lat: 120.5, location_lon: 120.5, name: "some name"}
     @update_attrs %{date_end: ~D[2011-05-18], date_start: ~D[2011-05-18], description: "some updated description", location: "some updated location", location_lat: 456.7, location_lon: 456.7, name: "some updated name"}
@@ -87,23 +87,23 @@ defmodule Labamba.EditorTest do
       {:ok, event} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Editor.create_event()
+        |> Model.create_event()
 
       event
     end
 
     test "list_events/0 returns all events" do
       event = event_fixture()
-      assert Editor.list_events() |> Repo.preload(:bands) == [event]
+      assert Model.list_events() |> Repo.preload(:bands) == [event]
     end
 
     test "get_event!/1 returns the event with given id" do
       event = event_fixture()
-      assert Editor.get_event!(event.id) |> Repo.preload(:bands) == event
+      assert Model.get_event!(event.id) |> Repo.preload(:bands) == event
     end
 
     test "create_event/1 with valid data creates a event" do
-      assert {:ok, %Event{} = event} = Editor.create_event(@valid_attrs)
+      assert {:ok, %Event{} = event} = Model.create_event(@valid_attrs)
       assert event.date_end == ~D[2010-04-17]
       assert event.date_start == ~D[2010-04-17]
       assert event.description == "some description"
@@ -114,12 +114,12 @@ defmodule Labamba.EditorTest do
     end
 
     test "create_event/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Editor.create_event(@invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Model.create_event(@invalid_attrs)
     end
 
     test "update_event/2 with valid data updates the event" do
       event = event_fixture()
-      assert {:ok, event} = Editor.update_event(event, @update_attrs)
+      assert {:ok, event} = Model.update_event(event, @update_attrs)
       assert %Event{} = event
       assert event.date_end == ~D[2011-05-18]
       assert event.date_start == ~D[2011-05-18]
@@ -132,19 +132,19 @@ defmodule Labamba.EditorTest do
 
     test "update_event/2 with invalid data returns error changeset" do
       event = event_fixture()
-      assert {:error, %Ecto.Changeset{}} = Editor.update_event(event, @invalid_attrs)
-      assert event == Editor.get_event!(event.id) |> Repo.preload(:bands)
+      assert {:error, %Ecto.Changeset{}} = Model.update_event(event, @invalid_attrs)
+      assert event == Model.get_event!(event.id) |> Repo.preload(:bands)
     end
 
     test "delete_event/1 deletes the event" do
       event = event_fixture()
-      assert {:ok, %Event{}} = Editor.delete_event(event)
-      assert_raise Ecto.NoResultsError, fn -> Editor.get_event!(event.id) end
+      assert {:ok, %Event{}} = Model.delete_event(event)
+      assert_raise Ecto.NoResultsError, fn -> Model.get_event!(event.id) end
     end
 
     test "change_event/1 returns a event changeset" do
       event = event_fixture()
-      assert %Ecto.Changeset{} = Editor.change_event(event)
+      assert %Ecto.Changeset{} = Model.change_event(event)
     end
   end
 end

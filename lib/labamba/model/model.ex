@@ -1,12 +1,12 @@
-defmodule Labamba.Editor do
+defmodule Labamba.Model do
   @moduledoc """
-  The Editor context.
+  The Model context.
   """
 
   import Ecto.Query, warn: false
   alias Labamba.Repo
 
-  alias Labamba.Editor.Band
+  alias Labamba.Model.Band
 
   defmacro _where_band_like_stmt(search_string) do
     quote do
@@ -113,7 +113,7 @@ defmodule Labamba.Editor do
     where: _where_band_like_stmt(normalize(search_string))
   end
 
-  alias Labamba.Editor.Event
+  alias Labamba.Model.Event
 
   @doc """
   Returns the list of events.

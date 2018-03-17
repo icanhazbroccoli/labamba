@@ -1,21 +1,21 @@
 defmodule LabambaWeb.BandController do
   use LabambaWeb, :controller
 
-  alias Labamba.Editor
-  alias Labamba.Editor.Band
+  alias Labamba.Model
+  alias Labamba.Model.Band
 
   def index(conn, _params) do
-    bands = Editor.list_bands()
+    bands = Model.list_bands()
     render(conn, "index.html", bands: bands)
   end
 
   def new(conn, _params) do
-    changeset = Editor.change_band(%Band{})
+    changeset = Model.change_band(%Band{})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"band" => band_params}) do
-    case Editor.create_band(band_params) do
+    case Model.create_band(band_params) do
       {:ok, band} ->
         conn
         |> put_flash(:info, "Band created successfully.")
@@ -26,20 +26,20 @@ defmodule LabambaWeb.BandController do
   end
 
   def show(conn, %{"id" => id}) do
-    band = Editor.get_band!(id)
+    band = Model.get_band!(id)
     render(conn, "show.html", band: band)
   end
 
   def edit(conn, %{"id" => id}) do
-    band = Editor.get_band!(id)
-    changeset = Editor.change_band(band)
+    band = Model.get_band!(id)
+    changeset = Model.change_band(band)
     render(conn, "edit.html", band: band, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "band" => band_params}) do
-    band = Editor.get_band!(id)
+    band = Model.get_band!(id)
 
-    case Editor.update_band(band, band_params) do
+    case Model.update_band(band, band_params) do
       {:ok, band} ->
         conn
         |> put_flash(:info, "Band updated successfully.")
@@ -50,8 +50,8 @@ defmodule LabambaWeb.BandController do
   end
 
   def delete(conn, %{"id" => id}) do
-    band = Editor.get_band!(id)
-    {:ok, _band} = Editor.delete_band(band)
+    band = Model.get_band!(id)
+    {:ok, _band} = Model.delete_band(band)
 
     conn
     |> put_flash(:info, "Band deleted successfully.")

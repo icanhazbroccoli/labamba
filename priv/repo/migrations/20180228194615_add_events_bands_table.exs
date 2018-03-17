@@ -6,5 +6,8 @@ defmodule Labamba.Repo.Migrations.AddEventsBandsTable do
       add :event_id, references(:events)
       add :band_id, references(:bands)
     end
+
+    # TODO: uncomment me
+    # create unique_index(:events_bands, [:event_id, :band_id])
   end
 end

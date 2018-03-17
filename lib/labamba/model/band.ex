@@ -1,13 +1,13 @@
-defmodule Labamba.Editor.Band do
+defmodule Labamba.Model.Band do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Labamba.Editor.Band
+  alias Labamba.Model.Band
 
   schema "bands" do
     field :description, :string
     field :name, :string
 
-    many_to_many :events, Labamba.Editor.Event, join_through: "events_bands"
+    many_to_many :events, Labamba.Model.Event, join_through: "events_bands"
 
     timestamps()
   end
