@@ -3,7 +3,10 @@ defmodule Labamba.Repo.Migrations.CreateBands do
 
   def change do
     create table(:bands) do
+
       add :name, :string
+      add :pic_url, :string
+      add :band_website, :string
       add :description, :text
 
       timestamps()
