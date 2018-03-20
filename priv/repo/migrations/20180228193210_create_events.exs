@@ -9,7 +9,8 @@ defmodule Labamba.Repo.Migrations.CreateEvents do
       add :date_end, :date
       add :description, :text
       add :link, :string
-      add :location, :string
+      add :location_place, :string
+      add :location_country, :string
       add :location_lat, :float
       add :location_lon, :float
 

@@ -79,9 +79,9 @@ defmodule Labamba.ModelTest do
   describe "events" do
     alias Labamba.Model.Event
 
-    @valid_attrs %{date_end: ~D[2010-04-17], date_start: ~D[2010-04-17], description: "some description", location: "some location", location_lat: 120.5, location_lon: 120.5, name: "some name"}
-    @update_attrs %{date_end: ~D[2011-05-18], date_start: ~D[2011-05-18], description: "some updated description", location: "some updated location", location_lat: 456.7, location_lon: 456.7, name: "some updated name"}
-    @invalid_attrs %{date_end: nil, date_start: nil, description: nil, location: nil, location_lat: nil, location_lon: nil, name: nil}
+    @valid_attrs %{date_end: ~D[2010-04-17], date_start: ~D[2010-04-17], description: "some description", location_place: "some location", location_country: "some country", location_lat: 120.5, location_lon: 120.5, name: "some name", link: "some link"}
+    @update_attrs %{date_end: ~D[2011-05-18], date_start: ~D[2011-05-18], description: "some updated description", location_place: "some updated location", location_country: "some updated country", location_lat: 456.7, location_lon: 456.7, name: "some updated name", link: "some updated link"}
+    @invalid_attrs %{date_end: nil, date_start: nil, description: nil, location_place: nil, location_country: nil, location_lat: nil, location_lon: nil, name: nil, link: nil}
 
     def event_fixture(attrs \\ %{}) do
       {:ok, event} =
@@ -107,10 +107,12 @@ defmodule Labamba.ModelTest do
       assert event.date_end == ~D[2010-04-17]
       assert event.date_start == ~D[2010-04-17]
       assert event.description == "some description"
-      assert event.location == "some location"
+      assert event.location_place == "some location"
+      assert event.location_country == "some country"
       assert event.location_lat == 120.5
       assert event.location_lon == 120.5
       assert event.name == "some name"
+      assert event.link == "some link"
     end
 
     test "create_event/1 with invalid data returns error changeset" do
@@ -124,10 +126,12 @@ defmodule Labamba.ModelTest do
       assert event.date_end == ~D[2011-05-18]
       assert event.date_start == ~D[2011-05-18]
       assert event.description == "some updated description"
-      assert event.location == "some updated location"
+      assert event.location_place == "some updated location"
+      assert event.location_country == "some updated country"
       assert event.location_lat == 456.7
       assert event.location_lon == 456.7
       assert event.name == "some updated name"
+      assert event.link == "some updated link"
     end
 
     test "update_event/2 with invalid data returns error changeset" do

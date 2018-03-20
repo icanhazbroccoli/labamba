@@ -7,7 +7,8 @@
       <th>Description</th>
       <th>Date start</th>
       <th>Date end</th>
-      <th>Location</th>
+      <th>Location place</th>
+      <th>Location country</th>
       <th>Location lat</th>
       <th>Location lon</th>
 
@@ -21,7 +22,8 @@
       <td><%= event.description %></td>
       <td><%= event.date_start %></td>
       <td><%= event.date_end %></td>
-      <td><%= event.location %></td>
+      <td><%= event.location_place %></td>
+      <td><%= event.location_country %></td>
       <td><%= event.location_lat %></td>
       <td><%= event.location_lon %></td>
 

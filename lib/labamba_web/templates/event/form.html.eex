@@ -12,6 +12,12 @@
   </div>
 
   <div class="form-group">
+      <%= label f, :link, class: "control-label" %>
+      <%= text_input f, :link, class: "form-control" %>
+      <%= error_tag f, :link %>
+    </div>
+
+  <div class="form-group">
     <%= label f, :description, class: "control-label" %>
     <%= text_input f, :description, class: "form-control" %>
     <%= error_tag f, :description %>
@@ -30,10 +36,16 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :location, class: "control-label" %>
-    <%= text_input f, :location, class: "form-control" %>
-    <%= error_tag f, :location %>
+    <%= label f, :location_place, class: "control-label" %>
+    <%= text_input f, :location_place, class: "form-control" %>
+    <%= error_tag f, :location_place %>
   </div>
+
+  <div class="form-group">
+      <%= label f, :location_country, class: "control-label" %>
+      <%= text_input f, :location_country, class: "form-control" %>
+      <%= error_tag f, :location_country %>
+    </div>
 
   <div class="form-group">
     <%= label f, :location_lat, class: "control-label" %>

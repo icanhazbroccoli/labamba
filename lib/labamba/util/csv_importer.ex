@@ -36,15 +36,39 @@ defmodule Labamba.Util.CSVImporter do
             end
             {field_n, field_mapper.(field_v)}
           end)
-          |> Enum.into([])
+          |> Enum.into(%{})
         end
       end
 
       defp _build_attr_mapper(:id), do: fn v -> v end
       defp _build_attr_mapper(:string), do: fn v -> v end
-      defp _build_attr_mapper(:float), do: fn v -> String.to_float(v) end
-      defp _build_attr_mapper(:boolean), do: fn v -> String.to_integer(v) != 0 end
-      defp _build_attr_mapper(:integer), do: fn v -> String.to_integer(v) end
+      defp _build_attr_mapper(:float) do
+        fn v ->
+          case v do
+            nil -> nil
+            "" -> nil
+            _ -> String.to_float(v)
+          end
+        end
+      end
+      defp _build_attr_mapper(:boolean) do
+        fn v ->
+          case v do
+            nil -> nil
+            "" -> nil
+            _ -> String.to_integer(v) != 0
+          end
+        end
+      end
+      defp _build_attr_mapper(:integer) do
+        fn v ->
+          case v do
+            nil -> nil
+            "" -> nil
+            _ -> String.to_integer(v)
+          end
+        end
+      end
       defp _build_attr_mapper(:date) do
         fn v ->
           {:ok, parsed_date} = Date.from_iso8601(v)

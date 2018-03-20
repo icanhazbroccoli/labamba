@@ -8,6 +8,11 @@
   </li>
 
   <li>
+      <strong>Link:</strong>
+      <%= @event.link %>
+    </li>
+
+  <li>
     <strong>Description:</strong>
     <%= @event.description %>
   </li>
@@ -23,9 +28,14 @@
   </li>
 
   <li>
-    <strong>Location:</strong>
-    <%= @event.location %>
+    <strong>Location place:</strong>
+    <%= @event.location_place %>
   </li>
+
+  <li>
+      <strong>Location country:</strong>
+      <%= @event.location_country %>
+    </li>
 
   <li>
     <strong>Location lat:</strong>

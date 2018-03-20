@@ -28,11 +28,15 @@ defmodule Labamba.UtilCsvImporterTest do
   describe "CSVImporter" do
 
     test "import_csv" do
-      Path.join(__DIR__, "test.csv")
+      changesets = Path.join(__DIR__, "test.csv")
       |> Path.expand
       |> TestCSVImporter.import_csv(?\t, [:id, :name, :number, :date])
       |> Enum.into([])
-      |> IO.inspect
+
+      changesets
+      |> Enum.each(fn _changeset = %TestModel{} ->
+        assert true
+      end)
     end
 
   end

@@ -1,12 +1,5 @@
-defmodule Labamba.Util.EventsCsvImporter do
-
-  alias Labamba.Test.Repo
-  alias Labamba.Model.Event
-
-  use Labamba.Util.CSVImporter, Event
-
-end
-
 System.argv()
   |> Enum.at(0)
-  |> Labamba.Util.EventsCsvImporter.import_csv()
+  |> Labamba.Util.EventImporter.import_csv(?\t, [:name, :date_start, :date_end, :link, :location_place, :location_country, :location_lat, :location_lon])
+  |> Enum.each(&IO.inspect/1)
+#  |> IO.inspect

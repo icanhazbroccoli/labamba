@@ -10,7 +10,8 @@ defmodule Labamba.Model.Event do
     field :date_end, :date
     field :description, :string
     field :link, :string
-    field :location, :string
+    field :location_place, :string
+    field :location_country, :string
     field :location_lat, :float
     field :location_lon, :float
 
@@ -22,9 +23,9 @@ defmodule Labamba.Model.Event do
   @doc false
   def changeset(%Event{} = event, attrs) do
     event
-    |> cast(attrs, [:name, :date_start, :date_end, :description, :link, :location, :location_lat, :location_lon])
+    |> cast(attrs, [:name, :date_start, :date_end, :description, :link, :location_place, :location_country, :location_lat, :location_lon])
     |> put_assoc(:bands, parse_bands(attrs))
-    |> validate_required([:name, :date_start, :date_end, :location])
+    |> validate_required([:name, :date_start, :date_end, :link])
   end
 
   defp parse_bands(params) do
