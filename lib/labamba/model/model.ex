@@ -113,6 +113,10 @@ defmodule Labamba.Model do
     where: _where_band_like_stmt(normalize(search_string))
   end
 
+  def find_band!(attrs) do
+    Repo.get_by!(Band, attrs)
+  end
+
   alias Labamba.Model.Event
 
   @doc """
@@ -207,6 +211,10 @@ defmodule Labamba.Model do
   """
   def change_event(%Event{} = event) do
     Event.changeset(event, %{})
+  end
+
+  def find_event!(attrs) do
+    Repo.get_by!(Event, attrs)
   end
 
   defp normalize(search_string) do
