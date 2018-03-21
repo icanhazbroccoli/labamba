@@ -8,6 +8,7 @@ defmodule Labamba.Repo.Migrations.CreateBands do
       add :pic_url, :string
       add :band_website, :string
       add :description, :text
+      add :youtube, :string
 
       timestamps()
     end

@@ -8,6 +8,7 @@ defmodule Labamba.Model.Band do
     field :pic_url, :string
     field :band_website, :string
     field :description, :string
+    field :youtube
 
     many_to_many :events, Labamba.Model.Event, join_through: "events_bands"
 
@@ -17,7 +18,7 @@ defmodule Labamba.Model.Band do
   @doc false
   def changeset(%Band{} = band, attrs) do
     band
-    |> cast(attrs, [:name, :pic_url, :band_website, :description])
+    |> cast(attrs, [:name, :pic_url, :band_website, :description, :youtube])
     |> validate_required([:name])
   end
 

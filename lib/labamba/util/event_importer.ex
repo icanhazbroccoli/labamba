@@ -1,4 +1,4 @@
 defmodule Labamba.Util.EventImporter do
   @moduledoc false
-  use Labamba.Util.CSVImporter, Labamba.Model.Event
+  use Labamba.Util.CSVImporter, model: Labamba.Model.Event, repo: Labamba.Repo
 end

@@ -1,28 +1,31 @@
 defmodule Labamba.Util.CSVImporter do
 
-  defmacro __using__(module) do
+  defmacro __using__([model: model, repo: repo]) do
     quote do
 
       def import_csv(nil, _, _), do: raise "import_csv/1 is missing a CSV file path"
       def import_csv(filename, separator = ?\t, fields) when is_binary(filename) do
         mapper = _build_mapper(fields)
         File.stream!(filename)
-        |> CSV.decode!(separator: separator)
-        |> Stream.map(mapper)
-        |> Stream.map(fn (attrs) ->
-          unquote(Macro.expand(module, __ENV__)).changeset(%unquote(Macro.expand(module, __ENV__)){}, attrs)
-        end)
+          |> CSV.decode!(separator: separator)
+          |> Stream.map(mapper)
+          |> Stream.map(fn (attrs) ->
+          unquote(Macro.expand(model, __ENV__)).changeset(%unquote(Macro.expand(model, __ENV__)){}, attrs)
+          end)
+          |> Enum.map(fn changeset ->
+            unquote(Macro.expand(repo, __ENV__)).insert(changeset)
+          end)
       end
       def import_csv(unknown_arg, _, _), do: "Unknown format of the CSV faile path argument: #{unknown_arg}"
 
       def clear_all do
-        Repo.delete_all(unquote(Macro.expand(module, __ENV__)))
+        unquote(Macro.expand(repo, __ENV__)).delete_all(unquote(Macro.expand(model, __ENV__)))
       end
 
       defp _build_mapper(fields) do
         field_mappers = fields
         |> Enum.map(fn(field) ->
-          {field, _build_attr_mapper(unquote(Macro.expand(module, __ENV__)).__schema__(:type, field))}
+          {field, _build_attr_mapper(unquote(Macro.expand(model, __ENV__)).__schema__(:type, field))}
         end)
         |> Enum.into(%{})
         fn (tuple) ->

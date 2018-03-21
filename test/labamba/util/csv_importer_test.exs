@@ -22,7 +22,7 @@ defmodule Labamba.UtilCsvImporterTest do
   use ExUnit.Case, async: true
 
   defmodule TestCSVImporter do
-    use CSVImporter, TestModel
+    use CSVImporter, model: TestModel, repo: Labamba.Test.Repo
   end
 
   describe "CSVImporter" do
@@ -31,7 +31,6 @@ defmodule Labamba.UtilCsvImporterTest do
       changesets = Path.join(__DIR__, "test.csv")
       |> Path.expand
       |> TestCSVImporter.import_csv(?\t, [:id, :name, :number, :date])
-      |> Enum.into([])
 
       changesets
       |> Enum.each(fn _changeset = %TestModel{} ->

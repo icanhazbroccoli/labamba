@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0ed76ee-2f39-4d92-b960-69de82351478" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/labamba/util/event_importer.ex" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/labamba/util/band_importer.ex" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/util/scripts/import_bands_csv.exs" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/labamba/model/event.ex" afterPath="$PROJECT_DIR$/lib/labamba/model/event.ex" />
+      <change beforePath="$PROJECT_DIR$/lib/labamba/model/band.ex" afterPath="$PROJECT_DIR$/lib/labamba/model/band.ex" />
+      <change beforePath="$PROJECT_DIR$/lib/labamba/test/repo.ex" afterPath="$PROJECT_DIR$/lib/labamba/test/repo.ex" />
       <change beforePath="$PROJECT_DIR$/lib/labamba/util/csv_importer.ex" afterPath="$PROJECT_DIR$/lib/labamba/util/csv_importer.ex" />
-      <change beforePath="$PROJECT_DIR$/lib/labamba_web/templates/event/form.html.eex" afterPath="$PROJECT_DIR$/lib/labamba_web/templates/event/form.html.eex" />
-      <change beforePath="$PROJECT_DIR$/lib/labamba_web/templates/event/index.html.eex" afterPath="$PROJECT_DIR$/lib/labamba_web/templates/event/index.html.eex" />
-      <change beforePath="$PROJECT_DIR$/lib/labamba_web/templates/event/show.html.eex" afterPath="$PROJECT_DIR$/lib/labamba_web/templates/event/show.html.eex" />
-      <change beforePath="$PROJECT_DIR$/priv/repo/migrations/20180228193210_create_events.exs" afterPath="$PROJECT_DIR$/priv/repo/migrations/20180228193210_create_events.exs" />
-      <change beforePath="$PROJECT_DIR$/test/labamba/model/model_test.exs" afterPath="$PROJECT_DIR$/test/labamba/model/model_test.exs" />
+      <change beforePath="$PROJECT_DIR$/lib/labamba/util/event_importer.ex" afterPath="$PROJECT_DIR$/lib/labamba/util/event_importer.ex" />
+      <change beforePath="$PROJECT_DIR$/priv/repo/migrations/20180226200701_create_bands.exs" afterPath="$PROJECT_DIR$/priv/repo/migrations/20180226200701_create_bands.exs" />
       <change beforePath="$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs" afterPath="$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs" />
-      <change beforePath="$PROJECT_DIR$/test/labamba_web/controllers/event_controller_test.exs" afterPath="$PROJECT_DIR$/test/labamba_web/controllers/event_controller_test.exs" />
       <change beforePath="$PROJECT_DIR$/util/scripts/import_events_csv.exs" afterPath="$PROJECT_DIR$/util/scripts/import_events_csv.exs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,21 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="csv_importer.ex" pinned="false" current-in-tab="true">
+      <file leaf-file-name="csv_importer.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/labamba/util/csv_importer.ex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="48" column="21" lean-forward="false" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="csv_importer_test.exs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="39" />
+            <state relative-caret-position="285">
+              <caret line="15" column="66" lean-forward="true" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -63,8 +51,68 @@
       <file leaf-file-name="import_events_csv.exs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util/scripts/import_events_csv.exs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="266">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="import_bands_csv.exs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/scripts/import_bands_csv.exs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="87" lean-forward="false" selection-start-line="12" selection-start-column="87" selection-end-line="12" selection-end-column="87" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="repo.ex" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/labamba/test/repo.ex">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="band.ex" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/labamba/model/band.ex">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="csv_importer_test.exs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="722">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="event_importer.ex" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/labamba/util/event_importer.ex">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="2" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="band_importer.ex" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/labamba/util/band_importer.ex">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -99,10 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/labamba/model/band.ex" />
-        <option value="$PROJECT_DIR$/lib/labamba/test/repo.ex" />
-        <option value="$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs" />
-        <option value="$PROJECT_DIR$/lib/labamba/util/event_importer.ex" />
         <option value="$PROJECT_DIR$/test/labamba_web/controllers/event_controller_test.exs" />
         <option value="$PROJECT_DIR$/test/labamba/model/model_test.exs" />
         <option value="$PROJECT_DIR$/priv/repo/migrations/20180228193210_create_events.exs" />
@@ -110,8 +154,15 @@
         <option value="$PROJECT_DIR$/lib/labamba_web/templates/event/form.html.eex" />
         <option value="$PROJECT_DIR$/lib/labamba_web/templates/event/show.html.eex" />
         <option value="$PROJECT_DIR$/lib/labamba_web/templates/event/index.html.eex" />
+        <option value="$PROJECT_DIR$/lib/labamba/util/event_importer.ex" />
         <option value="$PROJECT_DIR$/util/scripts/import_events_csv.exs" />
+        <option value="$PROJECT_DIR$/lib/labamba/util/band_importer.ex" />
+        <option value="$PROJECT_DIR$/util/scripts/import_bands_csv.exs" />
+        <option value="$PROJECT_DIR$/lib/labamba/model/band.ex" />
+        <option value="$PROJECT_DIR$/priv/repo/migrations/20180226200701_create_bands.exs" />
+        <option value="$PROJECT_DIR$/lib/labamba/test/repo.ex" />
         <option value="$PROJECT_DIR$/lib/labamba/util/csv_importer.ex" />
+        <option value="$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs" />
       </list>
     </option>
   </component>
@@ -181,34 +232,6 @@
             <path>
               <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
               <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba_web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba_web" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba_web" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba_web" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="event" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
               <item name="priv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -223,44 +246,6 @@
               <item name="priv" type="462c0819:PsiDirectoryNode" />
               <item name="repo" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba_web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labamba" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="labamba_web" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="labamba" type="b2602c69:ProjectViewProjectNode" />
@@ -524,25 +509,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/labamba/model/band.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deps/ecto/lib/ecto/repo.ex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="198" column="46" lean-forward="false" selection-start-line="198" selection-start-column="21" selection-end-line="198" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/labamba/repo.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -551,20 +521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/labamba/test/repo.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/labamba/util/event_importer.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="3" lean-forward="false" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -573,6 +529,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="269" column="0" lean-forward="false" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -580,14 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/priv/repo/migrations/20180228193210_create_events.exs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -655,10 +604,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/labamba/model/model.ex">
+    <entry file="file://$PROJECT_DIR$/lib/labamba/repo.ex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        <state relative-caret-position="19">
+          <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -666,23 +615,47 @@
     <entry file="file://$PROJECT_DIR$/lib/labamba_web/controllers/event_controller.ex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="18" column="16" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <caret line="18" column="21" lean-forward="false" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs">
+    <entry file="file://$PROJECT_DIR$/lib/labamba/model/model.ex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="39" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="39" />
+        <state relative-caret-position="366">
+          <caret line="161" column="20" lean-forward="false" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/scripts/import_events_csv.exs">
+    <entry file="file://$PROJECT_DIR$/lib/labamba/util/band_importer.ex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="38">
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/labamba/util/event_importer.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="2" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/priv/repo/migrations/20180226200701_create_bands.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/priv/repo/migrations/20180228193210_create_events.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -697,8 +670,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/labamba/util/csv_importer.ex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="48" column="21" lean-forward="false" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        <state relative-caret-position="285">
+          <caret line="15" column="66" lean-forward="true" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/scripts/import_events_csv.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/scripts/import_bands_csv.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="87" lean-forward="false" selection-start-line="12" selection-start-column="87" selection-end-line="12" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/labamba/test/repo.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/labamba/model/band.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/labamba/util/csv_importer_test.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
