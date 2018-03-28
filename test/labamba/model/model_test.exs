@@ -65,25 +65,6 @@ defmodule Labamba.ModelTest do
       assert %Ecto.Changeset{} = Model.change_band(band)
     end
 
-    @tag :fulltext
-    test "where_band_like/2 returns a relevant band" do
-      [
-        "alpha beta",
-        "gamma delta",
-        "epsilon zeta"
-      ]
-      |> Enum.map(fn name -> %{ name: name } end)
-      |> Enum.each(&band_fixture/1)
-
-      search_term = ~s(alpha zeta)
-
-      query = from b in Band
-      bands = Model.where_band_like(query, search_term)
-      band_names = bands
-      |> Enum.map(&(&1.name))
-      |> Enum.sort
-      assert band_names == ["alpha beta", "epsilon zeta"]
-    end
   end
 
   describe "events" do

@@ -102,17 +102,6 @@ defmodule Labamba.Model do
     Band.changeset(band, %{})
   end
 
-  def where_band_like(query, search_term) do
-  tsv_query = search_term
-  |> normalize
-  |> String.split(~r/\s+/)
-  |> Enum.map(fn chunk -> "#{chunk}:*" end)
-  |> Enum.join(" | ")
-  (from b in query,
-      where: fragment("? @@ to_tsquery(unaccent(?))", b.name_tsv, ^tsv_query))
-    |> Repo.all
-  end
-
   def find_band!(attrs) do
     Repo.get_by!(Band, attrs)
   end
@@ -216,13 +205,5 @@ defmodule Labamba.Model do
   def find_event!(attrs) do
     Repo.get_by!(Event, attrs)
   end
-
-  defp normalize(search_string) do
-    search_string
-    |> String.downcase
-    |> String.replace(~r/\n/, " ")
-    |> String.replace(~r/\t/, " ")
-    |> String.replace(~r/\s{2,}/, " ")
-    |> String.trim
-  end
+  
 end

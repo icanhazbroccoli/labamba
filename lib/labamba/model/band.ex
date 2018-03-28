@@ -8,7 +8,7 @@ defmodule Labamba.Model.Band do
     field :pic_url, :string
     field :band_website, :string
     field :description, :string
-    field :youtube
+    field :youtube, :string
 
     many_to_many :events, Labamba.Model.Event, join_through: "events_bands"
 
