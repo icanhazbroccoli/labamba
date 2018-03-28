@@ -4,6 +4,11 @@ defmodule Labamba.API do
   alias Labamba.Repo
   alias Labamba.Model.{Band, Event}
 
+  def where_band_like(search_term) do
+    q = from b in Band
+    where_band_like(q, search_term)
+  end
+
   def where_band_like(query, search_term) do
     tsv_query = search_term
                 |> normalize

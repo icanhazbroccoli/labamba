@@ -27,7 +27,9 @@ defmodule LabambaWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", LabambaWeb do
-  #   pipe_through :api
-  # end
+   scope "/api", LabambaWeb do
+     pipe_through :api
+
+     get "/bands", API.BandAPIController, :search
+   end
 end
