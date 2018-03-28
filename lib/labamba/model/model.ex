@@ -8,12 +8,6 @@ defmodule Labamba.Model do
 
   alias Labamba.Model.Band
 
-  defmacro _where_band_like_stmt(search_string) do
-    quote do
-      fragment("b0.name @@ plainto_tsquery(unaccent(?))", ^unquote(search_string))
-    end
-  end
-
   @doc """
   Returns the list of bands.
 
@@ -108,9 +102,15 @@ defmodule Labamba.Model do
     Band.changeset(band, %{})
   end
 
-  def where_band_like(query, search_string) do
-    from q in query,
-    where: _where_band_like_stmt(normalize(search_string))
+  def where_band_like(query, search_term) do
+  tsv_query = search_term
+  |> normalize
+  |> String.split(~r/\s+/)
+  |> Enum.map(fn chunk -> "#{chunk}:*" end)
+  |> Enum.join(" | ")
+  (from b in query,
+      where: fragment("? @@ to_tsquery(unaccent(?))", b.name_tsv, ^tsv_query))
+    |> Repo.all
   end
 
   def find_band!(attrs) do
