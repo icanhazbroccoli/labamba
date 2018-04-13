@@ -90,8 +90,9 @@ defmodule Labamba.APITest do
         %{ event_id: Enum.at(events, 2).id, band_id: Enum.at(bands, 1).id, performance_date: ~D(2018-03-03) },
       ] |> Enum.map(&event_band_fixture/1)
 
-      data = API.event_ids_by_band_ids([1, 2, 3])
-      IO.inspect data
+      data = API.events_by_band_ids([1, 2, 3] |> Enum.map(fn i -> Enum.at(bands, i).id end))
+      assert (data |> Enum.map(fn event -> event.id end) |> Enum.sort),
+             (Enum.map([0, 1, 2], fn ix -> Enum.at(events, ix).id end) |> Enum.sort)
     end
 
   end

@@ -10,6 +10,7 @@ defmodule LabambaWeb.API.BandAPIView do
 
   defp band_json(band) do
     %{
+      id: band.id,
       name: band.name,
       pic_url: band.pic_url,
       band_website: band.band_website,

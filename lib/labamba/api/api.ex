@@ -20,14 +20,19 @@ defmodule Labamba.API do
     |> Repo.all
   end
 
-  def events_by_bands(band_ids) when is_list(band_ids) do
-    # TODO
+  def events_by_band_ids(band_ids) when is_list(band_ids) do
+    event_ids = event_ids_by_band_ids(band_ids)
+    case event_ids do
+      [] -> []
+      _ -> Event |> where([e], e.id in ^event_ids) |> Repo.all
+    end
   end
 
   def event_ids_by_band_ids(band_ids) do
     EventBand
     |> where([eb], eb.band_id in ^band_ids)
     |> Repo.all
+    |> Enum.map(fn event_band -> event_band.event_id end)
   end
 
   defp normalize(search_string) do

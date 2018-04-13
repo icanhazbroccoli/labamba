@@ -17,7 +17,7 @@ defmodule LabambaWeb.API.EventAPIController do
   end
 
   def search_by_bands(conn, %{"band_ids" => band_ids}) when is_list(band_ids) do
-    events = API.events_by_bands(band_ids)
+    events = API.events_by_band_ids(band_ids)
     render conn, "search_by_bands.json", events: events
   end
 
