@@ -19,6 +19,7 @@ defmodule Labamba.Model.Band do
   def changeset(%Band{} = band, attrs) do
     band
     |> cast(attrs, [:name, :pic_url, :band_website, :description, :youtube])
+    |> unique_constraint(:name)
     |> validate_required([:name])
   end
 

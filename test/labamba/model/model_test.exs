@@ -16,7 +16,6 @@ defmodule Labamba.ModelTest do
         attrs
         |> Enum.into(@valid_attrs)
         |> Model.create_band()
-
       band
     end
 

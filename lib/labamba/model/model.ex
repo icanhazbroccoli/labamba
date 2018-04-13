@@ -6,7 +6,7 @@ defmodule Labamba.Model do
   import Ecto.Query, warn: false
   alias Labamba.Repo
 
-  alias Labamba.Model.Band
+  alias Labamba.Model.{Event, Band, EventBand}
 
   @doc """
   Returns the list of bands.
@@ -106,8 +106,6 @@ defmodule Labamba.Model do
     Repo.get_by!(Band, attrs)
   end
 
-  alias Labamba.Model.Event
-
   @doc """
   Returns the list of events.
 
@@ -205,5 +203,11 @@ defmodule Labamba.Model do
   def find_event!(attrs) do
     Repo.get_by!(Event, attrs)
   end
-  
+
+  def create_event_band(attrs \\ %{}) do
+    %EventBand{}
+    |> EventBand.changeset(attrs)
+    |> Repo.insert()
+  end
+
 end

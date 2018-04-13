@@ -3,7 +3,6 @@ defmodule Labamba.Model.Event do
   import Ecto.Changeset
   alias Labamba.Model.Event
 
-
   schema "events" do
     field :name, :string
     field :date_start, :date
@@ -24,6 +23,7 @@ defmodule Labamba.Model.Event do
   def changeset(%Event{} = event, attrs) do
     event
     |> cast(attrs, [:name, :date_start, :date_end, :description, :link, :location_place, :location_country, :location_lat, :location_lon])
+    |> unique_constraint(:name)
     |> put_assoc(:bands, parse_bands(attrs))
     |> validate_required([:name, :date_start, :date_end, :link])
   end

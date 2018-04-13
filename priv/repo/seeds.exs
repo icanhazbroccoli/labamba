@@ -9,7 +9,7 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
-defmodule Labamba.EventsBandsSeeder do
+defmodule Labamba.EventBandSeeder do
 
   alias Labamba.Repo
   alias Labamba.Model.{Event, Band}
@@ -21,7 +21,6 @@ defmodule Labamba.EventsBandsSeeder do
         new
       _ -> v |> Repo.preload(:bands)
     end
-    IO.inspect "res: #{res}"
     res
   end
 
@@ -36,7 +35,6 @@ defmodule Labamba.EventsBandsSeeder do
 
   def insert_event_bands({event_name, band_names}) do
     event = find_or_create_event_by(name: event_name)
-    IO.inspect(event)
     bands = band_names
     |> Enum.map(fn band_name ->
       find_or_create_band_by(name: band_name)
@@ -54,9 +52,9 @@ defmodule Labamba.EventsBandsSeeder do
 
 end
 
-Labamba.EventsBandsSeeder.clear_all()
+Labamba.EventBandSeeder.clear_all()
 
 File.stream!("priv/fixtures/events_bands.csv")
 |> CSV.decode!(separator: ?\t)
 |> Enum.group_by(fn([k, _]) -> k end, fn([_, v]) -> v end)
-|> Enum.each(&Labamba.EventsBandsSeeder.insert_event_bands(&1))
+|> Enum.each(&Labamba.EventBandSeeder.insert_event_bands(&1))

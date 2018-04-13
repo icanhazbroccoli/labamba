@@ -1,4 +1,4 @@
-defmodule Labamba.Repo.Migrations.AddEventsBandsTable do
+defmodule Labamba.Repo.Migrations.AddEventBandTable do
   use Ecto.Migration
 
   def change do
