@@ -82,16 +82,15 @@ defmodule Labamba.APITest do
       ] |> Enum.map(&event_fixture/1)
 
       event_bands = [
-        %{ event_id: Enum.at(events, 0).id, band_id: Enum.at(bands, 0).id, performance_date: ~D(2018-01-01) },
-#        %{ event_id: Enum.at(events, 0).id, band_id: Enum.at(bands, 0).id, performance_date: ~D(2018-01-01) },
-        %{ event_id: Enum.at(events, 0).id, band_id: Enum.at(bands, 3).id, performance_date: ~D(2018-01-01) },
-        %{ event_id: Enum.at(events, 1).id, band_id: Enum.at(bands, 0).id, performance_date: ~D(2018-02-02) },
-        %{ event_id: Enum.at(events, 1).id, band_id: Enum.at(bands, 2).id, performance_date: ~D(2018-02-02) },
-        %{ event_id: Enum.at(events, 2).id, band_id: Enum.at(bands, 1).id, performance_date: ~D(2018-03-03) },
+        %{ event_id: Enum.at(events, 0).id, band_id: Enum.at(bands, 0).id, performance_date: ~D(2019-01-01) },
+        %{ event_id: Enum.at(events, 0).id, band_id: Enum.at(bands, 3).id, performance_date: ~D(2019-01-01) },
+        %{ event_id: Enum.at(events, 1).id, band_id: Enum.at(bands, 0).id, performance_date: ~D(2019-02-02) },
+        %{ event_id: Enum.at(events, 1).id, band_id: Enum.at(bands, 2).id, performance_date: ~D(2019-02-02) },
+        %{ event_id: Enum.at(events, 2).id, band_id: Enum.at(bands, 1).id, performance_date: ~D(2019-03-03) },
       ] |> Enum.map(&event_band_fixture/1)
 
-      data = API.events_by_band_ids([1, 2, 3] |> Enum.map(fn i -> Enum.at(bands, i).id end))
-      assert (data |> Enum.map(fn event -> event.id end) |> Enum.sort),
+      data = API.event_band_buckets_by_band_ids([1, 2, 3] |> Enum.map(fn i -> Enum.at(bands, i).id end))
+      assert (data |> Enum.map(fn %{event: event} -> event.id end) |> Enum.sort),
              (Enum.map([0, 1, 2], fn ix -> Enum.at(events, ix).id end) |> Enum.sort)
     end
 

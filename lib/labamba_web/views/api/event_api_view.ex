@@ -3,13 +3,13 @@ defmodule LabambaWeb.API.EventAPIView do
 
   alias Labamba.Model.Event
 
-  def render("search_by_bands.json", %{events: events}) do
+  def render("search_by_bands.json", %{event_band_buckets: event_band_buckets}) do
     %{
-      events: Enum.map(events, &event_json/1)
+      events: Enum.map(event_band_buckets, &event_json/1)
     }
   end
 
-  defp event_json(%Event{} = event) do
+  defp event_json(%{event: event, band_ids: band_ids}) do
     %{
       id: event.id,
       name: event.name,
@@ -21,6 +21,7 @@ defmodule LabambaWeb.API.EventAPIView do
       location_country: event.location_country,
       location_lat: event.location_lat,
       location_lon: event.location_lon,
+      band_ids: band_ids,
     }
   end
 end

@@ -20,19 +20,31 @@ defmodule Labamba.API do
     |> Repo.all
   end
 
-  def events_by_band_ids(band_ids) when is_list(band_ids) do
-    event_ids = event_ids_by_band_ids(band_ids)
-    case event_ids do
+  def event_band_buckets_by_band_ids(band_ids) when is_list(band_ids) do
+    event_band_id_buckets = event_band_id_buckets_by_band_ids(band_ids)
+    case Map.keys(event_band_id_buckets) do
       [] -> []
-      _ -> Event |> where([e], e.id in ^event_ids) |> Repo.all
+      ks -> Event |> where([e], e.id in ^ks) |> Repo.all |> Enum.map(fn ev ->
+        %{event: ev, band_ids: Map.get(event_band_id_buckets, ev.id)}
+      end)
     end
   end
 
-  def event_ids_by_band_ids(band_ids) do
+  def event_band_id_buckets_by_band_ids(band_ids) do
     EventBand
     |> where([eb], eb.band_id in ^band_ids)
+    |> where([eb], eb.performance_date >= ^Date.utc_today())
     |> Repo.all
-    |> Enum.map(fn event_band -> event_band.event_id end)
+    |> Enum.reduce(%{}, fn (eb, acc) ->
+      {_, acc} = Map.get_and_update(acc, eb.event_id, fn bucket ->
+        new_bucket = case bucket do
+          nil -> [eb.band_id]
+          _ -> [bucket | eb.band_id]
+        end
+        {bucket, new_bucket}
+      end)
+      acc
+    end)
   end
 
   defp normalize(search_string) do
