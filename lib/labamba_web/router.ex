@@ -30,7 +30,8 @@ defmodule LabambaWeb.Router do
    scope "/api", LabambaWeb do
      pipe_through :api
 
-     get "/bands", API.BandAPIController, :search
-     get "/events_by_bands", API.EventAPIController, :search_by_bands
+     get "/bands", API.BandAPIController, :index
+     get "/events", API.EventAPIController, :index
+     #get "/events_by_bands", API.EventAPIController, :search_by_bands
    end
 end

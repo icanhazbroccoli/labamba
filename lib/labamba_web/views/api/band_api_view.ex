@@ -2,7 +2,7 @@ defmodule LabambaWeb.API.BandAPIView do
 
   use LabambaWeb, :view
 
-  def render("search.json", %{bands: bands}) do
+  def render("index.json", %{bands: bands}) do
     %{
       bands: Enum.map(bands, &band_json/1)
     }

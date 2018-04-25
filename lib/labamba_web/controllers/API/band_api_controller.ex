@@ -5,9 +5,9 @@ defmodule LabambaWeb.API.BandAPIController do
   alias Labamba.API
   alias Labamba.Model.Band
 
-  def search(conn, %{"like" => like}) do
-    bands = API.where_band_like(like)
-    render conn, "search.json", bands: bands
+  def index(conn, params) do
+    bands = API.search_bands(params)
+    render conn, "index.json", bands: bands
   end
 
 end

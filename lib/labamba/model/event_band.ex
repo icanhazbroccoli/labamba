@@ -4,7 +4,6 @@ defmodule Labamba.Model.EventBand do
   alias Labamba.Model
   alias Labamba.Model.{Event, Band, EventBand}
 
-
   def __schema__(:type, :band_name), do: :string
   def __schema__(:type, :event_name), do: :string
 
